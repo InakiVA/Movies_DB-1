@@ -1,15 +1,14 @@
-import { Outlet } from 'react-router-dom';
-import { Header } from '../components/Header';
+import { Outlet } from "react-router-dom";
 
-const PrivateRouter = () => {
-    return (
-        <div>
-            <div>
-                Public Router
-            </div>
-            <Outlet />
-        </div>
-    );
+const PublicRouter = () => {
+  return (
+    <>
+      <div className="p-5 bg-gradient-to-b from-emerald-700 to-fuchsia-500 flex-auto h-full">
+        Public Router
+      </div>
+      <Outlet></Outlet>
+    </>
+  );
 };
 
-export default PrivateRouter;
+export default PublicRouter;

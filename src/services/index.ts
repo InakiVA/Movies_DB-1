@@ -1,7 +1,6 @@
-export { getPopularMovies } from './movies/getPopularMovies';
-export { getTopRated } from './movies/getTopRated';
-export { getUpcoming } from './movies/getUpcoming';
-export { getDetailsMovies } from './movies/getDetailsMovies';
-
-export { type IMovieResponse } from './movies/types'
-export { type IDetailsResponse } from './movies/types'
+export  {default as getPopular} from "./movies/getPopularMovies";
+export {default as getNowPlaying} from "./movies/getNowPlayingMovies";
+export {default as getTopRated} from './movies/getTopRatedMovies';
+export {default as getShowDetails} from './movies/getShowDetails';
+export {default as getUpcoming} from './movies/getUpcomingMovies';
+export {default as getRecommendedMovies} from './movies/getRecommendedMovies';

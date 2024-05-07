@@ -1,29 +1,27 @@
-import { MovieCard } from "../../components/MovieCard";
-import { movies } from "../../constants/moviesMock";
-import { Popular } from "../Popular";
-import { TopRated } from "../Top Rated";
+import React from "react";
+import { RatedHomeMenu } from "../../components/RatedHomeMenu";
+import { PopularHomeMenu } from "../../components/PopularHomeMenu";
+import { NowPlayingHomeMenu } from "../../components/NowPlayingHomeMenu";
+import { UpcomingCarousel } from "../../components/upcomingGallery";
 
 const Home = () => {
   return (
     <div>
-      <div className="overflow-x-auto bg-white m-0">
-        <div className="flex">
-          {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movieId={movie.id}
-              posterPath={movie.poster_path}
-              title={movie.title}
-              voteAverage={movie.vote_average}
-              genreId={movie.genre_ids[0]} // Corregido aquí
-            />
-          ))}
-        </div>
-      </div>
-      <div className="text-3xl text-black font-bold">Popular</div>
-      <Popular></Popular>
-      <div className="text-3xl text-black font-bold">Top Rated</div>
-      <TopRated></TopRated>
+      <h1 className="text-3xl font-bold mb-5">Upcoming Movies</h1>
+
+      <UpcomingCarousel />
+
+      <h1 className="text-3xl font-bold my-5">Now Playing</h1>
+
+      <NowPlayingHomeMenu />
+
+      <h1 className="text-3xl font-bold my-5">Popular</h1>
+
+      <PopularHomeMenu />
+
+      <h1 className="text-3xl font-bold my-5">Top Rated</h1>
+
+      <RatedHomeMenu />
     </div>
   );
 };

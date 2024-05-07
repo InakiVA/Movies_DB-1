@@ -1,4 +1,4 @@
 export interface IPill {
     title: string;
-    color: string;
+    color: 'red' | 'green' | 'yellow' | 'grayblue';
 }

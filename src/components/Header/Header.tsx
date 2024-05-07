@@ -1,31 +1,52 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import React from "react";
 import { ROUTES } from "../../routes/constants";
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
-    <nav className="bg-gradient-to-r from-blue-500 via-purple-500 to-red-500">
-      <div className="flex flex-auto ml-10 py-5 text-white text-4xl">
-        MOVIE DATABASE
-      </div>
-      <ul className="flex flex-auto gap-16 p-4 text-white text-xl">
-        <li className="hover:bg-neutral-950 rounded-full hover:bg-opacity-20 px-2">
-          <Link to={ROUTES.HOME}>Home</Link>
-        </li>
-        <li className="hover:bg-neutral-950 rounded-full hover:bg-opacity-20 px-2">
-          <Link to={ROUTES.POPULAR}>Popular</Link>
-        </li>
-        <li className="hover:bg-neutral-950 rounded-full hover:bg-opacity-20 px-2">
-          <Link to={ROUTES.TOPRATED}>Top Rated</Link>
-        </li>
-        <li className="hover:bg-neutral-950 rounded-full hover:bg-opacity-20 px-2">
-          <Link to={ROUTES.UPCOMING}>Upcoming</Link>
-        </li>
-        <li className="hover:bg-neutral-950 rounded-full hover:bg-opacity-20 px-2">
-          <Link to={ROUTES.FAVORITES}>My Favorites</Link>
-        </li>
-      </ul>
-    </nav>
+    <header className=" bg-black text-white">
+      <h1 className="text-3xl font-extrabold p-3 ">TOTALLY LEGAL FILMS</h1>
+      <h2 className="bg-white h-1 flex-auto"></h2>
+      <nav className="p-4 md:flex md:items-center md:space-x-4">
+        <Link
+          to={ROUTES.HOME}
+          className="px-3 font-bold hover:-translate-y-1 hover:scale-125 hover:bg-gradient-to-r from-emerald-700 via-amber-600 to-fuchsia-500 hover:rounded-full hover:bg-opacity-5"
+        >
+          Home
+        </Link>
+        <Link
+          to={ROUTES.POPULAR}
+          className="px-3 font-bold hover:-translate-y-1 hover:scale-125 hover:bg-gradient-to-r from-emerald-700 via-amber-600 to-fuchsia-500 hover:rounded-full hover:bg-opacity-5"
+        >
+          Popular
+        </Link>
+        <Link
+          to={ROUTES.TOPRATED}
+          className="px-3 font-bold hover:-translate-y-1 hover:scale-125 hover:bg-gradient-to-r from-emerald-700 via-amber-600 to-fuchsia-500 hover:rounded-full hover:bg-opacity-5"
+        >
+          Top Rated
+        </Link>
+        <Link
+          to={ROUTES.NOWPLAYING}
+          className="px-3 font-bold hover:-translate-y-1 hover:scale-125 hover:bg-gradient-to-r from-emerald-700 via-amber-600 to-fuchsia-500 hover:rounded-full hover:bg-opacity-5"
+        >
+          Now Playing
+        </Link>
+
+        <Link
+          to={ROUTES.UPCOMING}
+          className="px-3 font-bold hover:-translate-y-1 hover:scale-125 hover:bg-gradient-to-r from-emerald-700 via-amber-600 to-fuchsia-500 hover:rounded-full hover:bg-opacity-5"
+        >
+          Upcoming
+        </Link>
+        <Link
+          to={ROUTES.MYFAVORITES}
+          className="px-3 font-bold hover:-translate-y-1 hover:scale-125 hover:bg-gradient-to-r from-red-700 via-purple-600 to-blue-500 hover:rounded-full hover:bg-opacity-5"
+        >
+          My Favorites
+        </Link>
+      </nav>
+    </header>
   );
 };
 

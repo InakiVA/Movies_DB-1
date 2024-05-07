@@ -1,49 +1,52 @@
-import { useEffect, useState } from "react";
-import { IMovieResponse, getTopRated, getUpcoming } from "../../services";
+import React, { useEffect, useState } from "react";
 import { MovieCard } from "../../components/MovieCard";
+import { IMovieResponse } from "./types";
+import { getUpcoming } from "../../services";
 
-const Upcoming: React.FC = () => {
-    const [movies, setMovies] = useState<IMovieResponse[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [errorMovies, setErrorMovies] = useState<boolean>(false);
+const Upcoming = () => {
+  const [movies, setMovies] = useState<IMovieResponse[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const getUp = async () => {
-        await getUpcoming()
-            .then((res) => {
-                if (res && res.data) {
-                    console.log(res.data, "res");
-                    setMovies(res.data.results);
-                }
-            })
-            .catch((err) => {
-                console.log(err, "err");
-            });
-        setLoading(false);
-    };
+  const getUpcomingMovies = async () => {
+    await getUpcoming()
+      .then((data) => {
+        if (data && data.data) {
+          setMovies(data.data.results);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setIsLoading(false);
+    setTimeout(() => {
+      getUpcomingMovies();
+    }, 5000);
+  };
 
-    useEffect(() => {
-        setLoading(true);
-        getUp();
-    }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    getUpcomingMovies();
+  }, []);
 
-    return (
-        <div>
-             <div className='flex flex-row flex-wrap justify-center items-start m-2'>
-            {loading && <div> Loading... </div>}
-            {errorMovies && <div> Error... </div>}
-                {movies.map((movie, index) => (
-                    <MovieCard
-                        key={movie.id}
-                        movieId={movie.id}
-                        posterPath={movie.poster_path}
-                        title={movie.title}
-                        voteAverage={movie.vote_average}
-                        genreId={movie.genre_ids[0]}
-                    />
-                ))}
-        </div>
-        </div>
-    );
+  return (
+    <div>
+      <h1 className="text-3xl font-bold">Upcoming Movies</h1>
+      <br />
+      <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-5 gap-4 bg-transparent">
+        {isLoading && <div>Loading...</div>}
+        {movies?.length > 0 &&
+          movies.map((movie) => (
+            <MovieCard
+              movieId={movie.id}
+              posterPath={movie.poster_path}
+              title={movie.title}
+              voteAverage={movie.vote_average}
+              genreId={movie.genre_ids[0]}
+            />
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default Upcoming;
