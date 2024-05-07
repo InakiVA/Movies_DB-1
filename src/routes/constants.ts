@@ -1,10 +1,9 @@
-import { Upcoming } from "../pages/Upcoming";
-
 export const ROUTES = {
     HOME: '/',
     POPULAR: '/popular',
-    TOPRATED: '/top_rated',
-    UPCOMING: '/upcoming',
-    SHOW: '/show/',
-    FAVORITES: '/favorites'
-};
+    TOPRATED:'/toprated',
+    NOWPLAYING: '/nowplaying',
+    MYFAVORITES:'/myfavorites',
+    SHOW:'/show/',
+    UPCOMING:'/upcoming'
+}
